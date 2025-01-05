@@ -1,0 +1,120 @@
+/* notes container */
+.judul-notes-container {
+  grid-area: judul;
+  display: flex;
+  justify-content: center;
+}
+
+#notesContainer {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "judul judul judul judul judul judul"
+    "allNotes archivedList . searchForm searchForm searchForm"
+    "notesList notesList notesList notesList notesList notesList";
+}
+
+#allNotesBtn {
+  grid-area: allNotes;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #212631;
+  color: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+}
+#allNotesBtn:hover {
+  background-color: #373f4e;
+}
+#allNotesBtn:active {
+  background-color: #4e576a;
+}
+#allNotesBtn.active {
+  opacity: 1;
+}
+
+#archivedListBtn {
+  grid-area: archivedList;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #212631;
+  color: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+}
+#archivedListBtn:hover {
+  background-color: #373f4e;
+}
+#archivedListBtn:active {
+  background-color: #4e576a;
+}
+#archivedListBtn.active {
+  opacity: 1;
+}
+
+#searchForm {
+  width: 100%;
+  grid-area: searchForm;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+.notes-list {
+  grid-area: notesList;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  flex: 1;
+  background-color: transparent;
+  color: #f0f1f5;
+  border: 1px solid #f0f1f5;
+}
+
+#searchSubmit {
+  padding: 0.5rem 0.8rem;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  path {
+    color: #212631;
+  }
+}
+
+#searchSubmit:hover {
+  background-color: #212631;
+
+  .search-icon {
+    path {
+      color: #ffffff;
+    }
+  }
+}
+
+#searchSubmit:active {
+  background-color: #4e576a;
+}
+
+/* notes container */
+
+/* media query */
+
+@media screen and (max-width: 600px) {
+  #notesContainer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "judul judul"
+      "searchForm searchForm"
+      "allNotes archivedList"
+      "notesList notesList";
+  }
+}

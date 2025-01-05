@@ -1,0 +1,157 @@
+.note {
+  display: flex;
+  align-items: stretch;
+}
+
+.notes-item {
+  border: 1px solid #212631;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: #e0e4eb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: 0.3s ease;
+  justify-content: start;
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+}
+.notes-item:hover {
+  background-color: #ffffff;
+  transition: 0.3s ease;
+}
+
+.note-title {
+  overflow: auto;
+}
+
+.notes-item h3 {
+  color: #0a0e15;
+  margin-block: 0;
+}
+
+.note-des {
+  margin-top: 0.25rem;
+  overflow: auto;
+}
+.note-des p {
+  color: #212631;
+  margin-block: 0;
+}
+
+.note-date p {
+  color: #212631cd;
+  font-size: 0.8rem;
+  margin-block: 0;
+}
+
+.notes-item .buttons {
+  align-self: flex-end;
+}
+
+.buttons {
+  margin-top: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.btn-archive,
+.btn-unarchive,
+.btn-delete {
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 100%;
+  transition: 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: end;
+}
+.btn-archive::after,
+.btn-unarchive::after,
+.btn-delete::after {
+  content: attr(data-message);
+  position: absolute;
+  top: -0.75rem;
+  left: -0.5rem;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.5rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-archive:hover::after,
+.btn-unarchive:hover::after,
+.btn-delete:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-0.5rem);
+}
+
+.btn-archive::after {
+  content: "Arsipkan Catatan";
+}
+
+.btn-unarchive::after {
+  content: "Batalkan Arsip";
+}
+
+.btn-delete::after {
+  content: "Hapus Catatan";
+}
+
+.btn-archive svg ,
+.btn-unarchive svg {
+  display: flex;
+  align-items: end;
+  padding-top: 1px;
+  font-size: 1.3rem;
+  path {
+    color: #373f4e;
+  }
+}
+
+.btn-delete svg {
+  font-size: 1.1rem;
+  padding-bottom: 1px;
+  path {
+    color: #373f4e;
+  }
+}
+
+.btn-archive:hover,
+.btn-unarchive:hover,
+.btn-delete:hover {
+  transform: scale(1.2);
+  transition: 0.3s ease;
+
+  svg path {
+    color: #212631;
+  }
+}
+
+.btn-archive:active,
+.btn-unarchive:active,
+.btn-delete:active {
+  svg path {
+    color: #0a0e15;
+  }
+}
+
+.btn-unarchive {
+  display: none;
+}

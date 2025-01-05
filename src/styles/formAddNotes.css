@@ -1,0 +1,58 @@
+/* form new notes */
+
+#formNewNotes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem 2rem;
+  background-color: #0a0e15;
+  border-radius: 16px;
+  border: 1px solid #212631;
+  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+}
+
+#noteForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#title,
+#description {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.validation-message {
+  color: #93a7ff;
+  margin-block: 0.5rem;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #93a7ff;
+}
+
+#notesSubmit {
+  align-self: flex-end;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #212631;
+  font-size: 1rem;
+  color: #ffffff;
+}
+#notesSubmit:hover {
+  background-color: #373f4e;
+}
+#notesSubmit:active {
+  background-color: #f0f1f5;
+}
+
+/* form new notes */
