@@ -39,7 +39,7 @@ class FormAddNotes extends React.Component {
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    this.props.addNotes(this.state);
+    this.props.addNote(this.state);
   }
 
   render() {
