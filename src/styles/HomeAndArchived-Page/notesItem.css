@@ -1,0 +1,56 @@
+.note {
+  display: flex;
+  align-items: stretch;
+}
+
+.notes-item {
+  border: 1px solid #212631;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: #e0e4eb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: 0.3s ease;
+  justify-content: start;
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+}
+.notes-item:hover {
+  background-color: #ffffff;
+  transition: 0.3s ease;
+}
+
+.note-title {
+  overflow: auto;
+}
+
+.notes-item h3 a {
+  color: #0a0e15;
+  margin-block: 0;
+  text-decoration: none;
+}
+.notes-item h3 a:hover {
+  color: #1f46a6;
+}
+
+.note-des {
+  margin-top: 0.25rem;
+  overflow: auto;
+}
+.note-des p {
+  color: #212631;
+  margin-block: 0;
+}
+
+.note-date p {
+  color: #212631cd;
+  font-size: 0.8rem;
+  margin-block: 0;
+}
+
+.notes-item .buttons {
+  align-self: flex-end;
+}

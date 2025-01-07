@@ -1,0 +1,45 @@
+#searchForm {
+  width: 100%;
+  grid-area: searchForm;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  flex: 1;
+  background-color: transparent;
+  color: #f0f1f5;
+  border: 1px solid #f0f1f5;
+}
+
+#searchSubmit {
+  padding: 0.5rem 0.8rem;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  path {
+    color: #212631;
+  }
+}
+
+#searchSubmit:hover {
+  background-color: #212631;
+
+  .search-icon {
+    path {
+      color: #ffffff;
+    }
+  }
+}
+
+#searchSubmit:active {
+  background-color: #4e576a;
+}

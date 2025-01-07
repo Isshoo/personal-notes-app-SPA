@@ -13,6 +13,13 @@ body {
   font-size: 95%;
 }
 
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
 input,
 button,
 textarea {
@@ -54,4 +61,7 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+}
+.pages-section {
+  width: 100%;
 }

@@ -5,7 +5,7 @@ class SearchNotesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: '',
+      searchQuery: this.props.keyword,
     };
 
     this.onInputQueryChangeEventHandler = this.onInputQueryChangeEventHandler.bind(this);
@@ -15,11 +15,11 @@ class SearchNotesForm extends React.Component {
   onInputQueryChangeEventHandler = (event) => {
     event.preventDefault();
     this.setState({ searchQuery: event.target.value });
-    this.props.onSearchNotes(event.target.value);
+    this.props.keywordChange(event.target.value);
   };
   onSubmitQueryEventHandler = (event) => {
     event.preventDefault();
-    this.props.onSearchNotes(this.state.searchQuery);
+    this.props.keywordChange(this.state.searchQuery);
   };
 
   render() {
