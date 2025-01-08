@@ -1,14 +1,13 @@
 import React from 'react';
-import { getNote } from '../../utils/local-data';
 import { useLocation } from 'react-router-dom';
 import { FaFolderPlus, FaFolderMinus, FaTrashAlt } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
-function NoteButtons({ id, onDelete, onArchive }) {
-  const note = getNote(id);
+function NoteButtons({ id, archived, onDelete, onArchive }) {
   const location = useLocation();
   return (
     <div className={`buttons ${location.pathname.startsWith('/notes/') ? 'detail' : ''}`}>
-      {note.archived ? (
+      {archived ? (
         <button
           className={`btn-unarchive note-btn ${location.pathname.startsWith('/notes/') ? 'detail' : ''}`}
           onClick={() => onArchive(id)}
@@ -32,5 +31,12 @@ function NoteButtons({ id, onDelete, onArchive }) {
     </div>
   );
 }
+
+NoteButtons.propTypes = {
+  id: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  archived: PropTypes.bool.isRequired,
+};
 
 export default NoteButtons;

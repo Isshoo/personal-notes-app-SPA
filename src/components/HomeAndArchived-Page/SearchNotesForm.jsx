@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 class SearchNotesForm extends React.Component {
   constructor(props) {
@@ -38,5 +39,10 @@ class SearchNotesForm extends React.Component {
     );
   }
 }
+
+SearchNotesForm.propTypes = {
+  keyword: PropTypes.string.isRequired,
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default SearchNotesForm;

@@ -1,6 +1,7 @@
 import React from 'react';
 import NotesItem from './NotesItem';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function NotesList({ notes, onDelete, onArchive }) {
   const location = useLocation();
@@ -26,5 +27,11 @@ function NotesList({ notes, onDelete, onArchive }) {
     </>
   );
 }
+
+NotesList.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onArchive: PropTypes.func.isRequired,
+};
 
 export default NotesList;

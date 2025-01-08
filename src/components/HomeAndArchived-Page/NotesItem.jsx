@@ -2,8 +2,9 @@ import React from 'react';
 import NoteButtons from './NoteButtons';
 import { Link } from 'react-router-dom';
 import { showFormattedDate } from '../../utils';
+import PropTypes from 'prop-types';
 
-function NotesItem({ id, title, body, createdAt, onDelete, onArchive }) {
+function NotesItem({ id, archived, title, body, createdAt, onDelete, onArchive }) {
   return (
     <div className="note">
       <div className="notes-item">
@@ -18,10 +19,20 @@ function NotesItem({ id, title, body, createdAt, onDelete, onArchive }) {
         <div className="note-des">
           <p>{body}</p>
         </div>
-        <NoteButtons id={id} onDelete={onDelete} onArchive={onArchive} />
+        <NoteButtons id={id} archived={archived} onDelete={onDelete} onArchive={onArchive} />
       </div>
     </div>
   );
 }
+
+NotesItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  archived: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onArchive: PropTypes.func.isRequired,
+};
 
 export default NotesItem;
