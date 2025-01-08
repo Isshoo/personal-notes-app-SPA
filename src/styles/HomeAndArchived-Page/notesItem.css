@@ -44,7 +44,9 @@
   color: #212631;
   margin-block: 0;
 }
-.note-des p b, .note-des p strong, .note-des p i {
+.note-des p b,
+.note-des p strong,
+.note-des p i {
   color: #212631;
 }
 

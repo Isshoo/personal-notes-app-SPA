@@ -29,7 +29,7 @@
 #title::placeholder {
   font-size: 1rem;
   font-weight: 400;
-  color: #2126319a; 
+  color: #2126319a;
   pointer-events: none;
 }
 
@@ -37,11 +37,13 @@
   content: attr(data-placeholder);
   font-weight: 400;
   font-size: 1rem;
-  color: #2126319a; 
-  pointer-events: none; 
+  color: #2126319a;
+  pointer-events: none;
 }
 
-#description b, #description strong, #description i {
+#description b,
+#description strong,
+#description i {
   color: #212631;
 }
 

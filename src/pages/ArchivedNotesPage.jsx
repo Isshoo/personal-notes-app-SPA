@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import { useSearchParams } from 'react-router-dom';
 import { getArchivedNotes, deleteNote, unarchiveNote } from '../utils/local-data';
 import NotesList from '../components/HomeAndArchived-Page/NotesList';
@@ -30,13 +31,30 @@ class ArchivedNotesPage extends React.Component {
   }
 
   onDeleteHandler(id) {
-    deleteNote(id);
+    Swal.fire({
+      title: 'Apakah Anda yakin?',
+      text: 'Catatan ini akan dihapus secara permanen.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Hapus',
+      cancelButtonText: 'Batal',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteNote(id);
 
-    // update the contact state from data.js
-    this.setState(() => {
-      return {
-        notes: getArchivedNotes(),
-      };
+        this.setState(() => {
+          return {
+            notes: getArchivedNotes(),
+          };
+        });
+
+        Swal.fire({
+          title: 'Berhasil!',
+          text: 'Catatan telah dihapus.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+      }
     });
   }
   onUnarchivingHandler(id) {

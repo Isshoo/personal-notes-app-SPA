@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import { addNote } from '../utils/local-data';
 import FormAddNotes from '../components/AddNotes-Page/FormAddNotes';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +9,14 @@ function AddNotesPage() {
 
   function onAddNoteHandler(note) {
     addNote(note);
-    navigate('/');
+    Swal.fire({
+      title: 'Berhasil!',
+      text: 'Catatan baru telah ditambahkan.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    }).then(() => {
+      navigate('/');
+    });
   }
 
   return (
