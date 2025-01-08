@@ -1,0 +1,52 @@
+.buttons.detail {
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  gap: 0.5rem;
+}
+
+.note-btn.detail::after {
+  transform: translateX(-30%);
+  padding: 0.25rem 0.4rem;
+  font-size: 0.75rem;
+}
+
+.note-btn.detail:hover::after {
+  opacity: 1;
+  transform: translateX(-30%) translateY(-0.9rem);
+}
+.note-btn.detail.btn-delete:hover:after {
+  transform: translateX(-30%) translateY(-1.1rem);
+}
+
+.btn-archive.detail::after {
+  content: "Arsipkan Catatan";
+}
+
+.btn-unarchive.detail::after {
+  content: "Batalkan Arsip";
+}
+
+.btn-delete.detail::after {
+  content: "Hapus Catatan";
+}
+
+.btn-archive.detail svg,
+.btn-unarchive.detail svg {
+  font-size: 2.2rem;
+  path {
+    color: #ffffff;
+  }
+}
+
+.btn-delete.detail svg {
+  font-size: 2rem;
+  path {
+    color: #ffffff;
+  }
+}
+
+.note-btn.detail:hover {
+  svg path {
+    color: #455068;
+  }
+}

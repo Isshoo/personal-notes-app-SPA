@@ -7,9 +7,7 @@
   align-items: end;
 }
 
-.btn-archive,
-.btn-unarchive,
-.btn-delete {
+.note-btn {
   position: relative;
   background-color: transparent;
   cursor: pointer;
@@ -20,9 +18,7 @@
   display: flex;
   align-items: end;
 }
-.btn-archive::after,
-.btn-unarchive::after,
-.btn-delete::after {
+.note-btn::after {
   content: attr(data-message);
   position: absolute;
   top: -0.75rem;
@@ -42,11 +38,12 @@
   z-index: 1000;
 }
 
-.btn-archive:hover::after,
-.btn-unarchive:hover::after,
-.btn-delete:hover::after {
+.note-btn:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(-0.5rem);
+}
+.note-btn.btn-delete:hover:after {
+  transform: translateX(-50%) translateY(-0.7rem);
 }
 
 .btn-archive::after {
@@ -80,20 +77,13 @@
   }
 }
 
-.btn-archive:hover,
-.btn-unarchive:hover,
-.btn-delete:hover {
-  transform: scale(1.2);
-  transition: 0.3s ease;
-
+.note-btn:hover {
   svg path {
     color: #212631;
   }
 }
 
-.btn-archive:active,
-.btn-unarchive:active,
-.btn-delete:active {
+.note-btn:active {
   svg path {
     color: #0a0e15;
   }

@@ -5,7 +5,7 @@ import { FaPlus } from 'react-icons/fa';
 function AddPageLink() {
   return (
     <div id="addPageLink">
-      <Link to="/add">
+      <Link to="/notes/new">
         <FaPlus />
       </Link>
     </div>

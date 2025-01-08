@@ -6,25 +6,25 @@
 }
 
 #addPageLink a {
-    background-color: #ffffffdf;
-    border-radius: 100%;
-    padding: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    box-shadow: -2px 2px 5px 3px rgba(0, 0, 0, 0.5);
+  background-color: #ffffffdf;
+  border-radius: 100%;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: -2px 2px 5px 3px rgba(0, 0, 0, 0.5);
 }
 #addPageLink a:hover {
-    background-color: #ffffff;
-    box-shadow: -2px 2px 5px 5px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  box-shadow: -2px 2px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #addPageLink a svg {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
-#addPageLink a svg path{
-    color: #212631;
+#addPageLink a svg path {
+  color: #212631;
 }
-#addPageLink a svg path:hover{
-    color: #101217;
+#addPageLink a svg path:hover {
+  color: #101217;
 }

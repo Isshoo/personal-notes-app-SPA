@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePageWrapper />} />
           <Route path="/archived" element={<ArchivedNotesPageWrapper />} />
-          <Route path="/add" element={<AddNotesPage />} />
+          <Route path="/notes/new" element={<AddNotesPage />} />
           <Route path="/notes/:id" element={<DetailNotesPage />} />
         </Routes>
       </main>

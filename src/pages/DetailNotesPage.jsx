@@ -1,10 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { getNote } from '../utils/local-data';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/local-data';
+import NotesDetail from '../components/NoteDetail-Page/NotesDetail';
 
 function DetailNotesPageWrapper() {
   const { id } = useParams();
-  return <DetailNotesPage id={id} />;
+  const navigate = useNavigate();
+  return <DetailNotesPage id={id} navigate={navigate} />;
 }
 
 class DetailNotesPage extends React.Component {
@@ -14,6 +16,24 @@ class DetailNotesPage extends React.Component {
     this.state = {
       note: getNote(props.id),
     };
+
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onArchivingHandler = this.onArchivingHandler.bind(this);
+    this.onUnarchivingHandler = this.onUnarchivingHandler.bind(this);
+  }
+
+  onDeleteHandler(id) {
+    deleteNote(id);
+    this.props.navigate('/');
+  }
+  onArchivingHandler(id) {
+    archiveNote(id);
+    this.props.navigate('/archived');
+  }
+
+  onUnarchivingHandler(id) {
+    unarchiveNote(id);
+    this.props.navigate('/');
   }
 
   render() {
@@ -23,7 +43,15 @@ class DetailNotesPage extends React.Component {
 
     return (
       <section className="pages-section">
-        <h3>{this.state.note.title}</h3>
+        <div className="detail-con">
+          <NotesDetail
+            {...this.state.note}
+            onDelete={this.onDeleteHandler}
+            onArchive={
+              this.state.note.archived ? this.onUnarchivingHandler : this.onArchivingHandler
+            }
+          />
+        </div>
       </section>
     );
   }
