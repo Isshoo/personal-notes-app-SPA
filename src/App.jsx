@@ -4,6 +4,7 @@ import HomePageWrapper from './pages/HomePage';
 import ArchivedNotesPageWrapper from './pages/ArchivedNotesPage';
 import AddNotesPage from './pages/AddNotesPage';
 import DetailNotesPage from './pages/DetailNotesPage';
+import NotFoundPage from './pages/NotFoundPage';
 import NavigationBar from './components/Base/NavigationBar';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/archived" element={<ArchivedNotesPageWrapper />} />
           <Route path="/notes/new" element={<AddNotesPage />} />
           <Route path="/notes/:id" element={<DetailNotesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <footer>
