@@ -3,6 +3,7 @@ import NoteButtons from './NoteButtons';
 import { Link } from 'react-router-dom';
 import { showFormattedDate } from '../../utils';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 
 function NotesItem({ id, archived, title, body, createdAt, onDelete, onArchive }) {
   return (
@@ -17,7 +18,7 @@ function NotesItem({ id, archived, title, body, createdAt, onDelete, onArchive }
           <p>{showFormattedDate(createdAt)}</p>
         </div>
         <div className="note-des">
-          <p>{body}</p>
+          <p>{parser(body)}</p>
         </div>
         <NoteButtons id={id} archived={archived} onDelete={onDelete} onArchive={onArchive} />
       </div>

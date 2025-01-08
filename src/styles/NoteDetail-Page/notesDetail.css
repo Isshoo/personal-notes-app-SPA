@@ -31,6 +31,9 @@
   color: #ffffff;
   font-size: 1.1rem;
 }
+.note-des.detail p b, .note-des.detail p strong, .note-des.detail p i {
+  color: #ffffff;
+}
 
 .note-date.detail p {
   color: #ffffffc1;

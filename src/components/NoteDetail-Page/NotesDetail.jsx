@@ -2,6 +2,7 @@ import React from 'react';
 import { showFormattedDate } from '../../utils';
 import NoteButtons from '../HomeAndArchived-Page/NoteButtons';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 
 function NotesDetail({ id, archived, title, body, createdAt, onDelete, onArchive }) {
   return (
@@ -14,7 +15,7 @@ function NotesDetail({ id, archived, title, body, createdAt, onDelete, onArchive
           <p>{showFormattedDate(createdAt)}</p>
         </div>
         <div className="note-des detail">
-          <p>{body}</p>
+          <p>{parser(body)}</p>
         </div>
         <NoteButtons id={id} archived={archived} onDelete={onDelete} onArchive={onArchive} />
       </div>

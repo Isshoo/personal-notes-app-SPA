@@ -33,7 +33,7 @@ class FormAddNotes extends React.Component {
   onBodyChangeEventHandler(event) {
     this.setState(() => {
       return {
-        body: event.target.value,
+        body: event.target.innerHTML,
       };
     });
   }
@@ -63,16 +63,15 @@ class FormAddNotes extends React.Component {
           </p>
         </div>
         <div>
-          <label htmlFor="description">Description</label>
-          <textarea
+          <label>Description</label>
+          <div
             id="description"
-            name="description"
-            required
-            placeholder="Deskripsi"
+            data-placeholder="Deskripsi"
             aria-describedby="descriptionValidation"
-            value={this.state.body}
-            onChange={this.onBodyChangeEventHandler}
-          ></textarea>
+            contentEditable
+            required
+            onInput={this.onBodyChangeEventHandler}
+          ></div>
           <p id="descriptionValidation" className="validation-message" aria-live="polite"></p>
         </div>
         <button type="submit" id="notesSubmit">

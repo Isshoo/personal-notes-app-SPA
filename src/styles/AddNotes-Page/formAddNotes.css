@@ -26,13 +26,32 @@
   border-radius: 0.25rem;
 }
 
+#title::placeholder {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #2126319a; 
+  pointer-events: none;
+}
+
+#description[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  font-weight: 400;
+  font-size: 1rem;
+  color: #2126319a; 
+  pointer-events: none; 
+}
+
+#description b, #description strong, #description i {
+  color: #212631;
+}
+
 .validation-message {
   color: #93a7ff;
   margin-block: 0.5rem;
 }
 
 input:focus,
-textarea:focus {
+#description:focus {
   border: 1px solid #93a7ff;
 }
 
