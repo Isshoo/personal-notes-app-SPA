@@ -31,36 +31,22 @@ header {
   gap: 1rem;
 }
 
-#allNotesBtn {
+.nav-button {
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   background-color: #212631;
   color: #ffffff;
   cursor: pointer;
+  opacity: 0.8;
 }
-#allNotesBtn:hover {
+.nav-button:hover {
   background-color: #373f4e;
 }
-#allNotesBtn:active {
+.nav-button:active {
   background-color: #4e576a;
 }
-#allNotesBtn.active {
+.nav-button.active {
+  background-color: #373f4e;
   opacity: 1;
 }
 
-#archivedListBtn {
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #212631;
-  color: #ffffff;
-  cursor: pointer;
-}
-#archivedListBtn:hover {
-  background-color: #373f4e;
-}
-#archivedListBtn:active {
-  background-color: #4e576a;
-}
-#archivedListBtn.active {
-  opacity: 1;
-}
