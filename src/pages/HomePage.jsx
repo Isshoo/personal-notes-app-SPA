@@ -70,7 +70,6 @@ class HomePage extends React.Component {
           notes={notes}
           onDelete={this.onDeleteHandler}
           onArchive={this.onArchivingHandler}
-          searchQuery={this.state.keyword}
         />
         <AddPageLink />
       </section>

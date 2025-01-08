@@ -71,7 +71,6 @@ class ArchivedNotesPage extends React.Component {
           notes={notes}
           onDelete={this.onDeleteHandler}
           onArchive={this.onUnarchivingHandler}
-          searchQuery={this.state.keyword}
         />
         <AddPageLink />
       </section>
