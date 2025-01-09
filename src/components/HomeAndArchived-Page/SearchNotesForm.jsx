@@ -2,42 +2,21 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-class SearchNotesForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: this.props.keyword,
-    };
-
-    this.onInputQueryChangeEventHandler = this.onInputQueryChangeEventHandler.bind(this);
-    this.onSubmitQueryEventHandler = this.onSubmitQueryEventHandler.bind(this);
-  }
-
-  onInputQueryChangeEventHandler = (event) => {
-    event.preventDefault();
-    this.setState({ searchQuery: event.target.value });
-    this.props.keywordChange(event.target.value);
-  };
-  onSubmitQueryEventHandler = (event) => {
-    event.preventDefault();
-    this.props.keywordChange(this.state.searchQuery);
-  };
-
-  render() {
-    return (
-      <form id="searchForm" onSubmit={this.onSubmitQueryEventHandler}>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Cari Notes"
-          onChange={this.onInputQueryChangeEventHandler}
-        />
-        <button type="submit" id="searchSubmit">
-          <FaSearch className="search-icon" />
-        </button>
-      </form>
-    );
-  }
+function SearchNotesForm({ keyword, keywordChange }) {
+  return (
+    <form id="searchForm">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari Notes..."
+        value={keyword}
+        onChange={(event) => keywordChange(event.target.value)}
+      />
+      <button type="submit" id="searchSubmit" disabled>
+        <FaSearch className="search-icon" />
+      </button>
+    </form>
+  );
 }
 
 SearchNotesForm.propTypes = {
