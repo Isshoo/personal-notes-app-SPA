@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/local-data';
 import NotesDetail from '../components/NoteDetail-Page/NotesDetail';
+import PropTypes from 'prop-types';
 
 function DetailNotesPageWrapper() {
   const { id } = useParams();
@@ -77,5 +78,10 @@ class DetailNotesPage extends React.Component {
     );
   }
 }
+
+DetailNotesPage.propTypes = {
+  id: PropTypes.string.isRequired,
+  navigate: PropTypes.func.isRequired,
+};
 
 export default DetailNotesPageWrapper;

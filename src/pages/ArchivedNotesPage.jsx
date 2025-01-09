@@ -5,6 +5,7 @@ import { getArchivedNotes, deleteNote, unarchiveNote } from '../utils/local-data
 import NotesList from '../components/HomeAndArchived-Page/NotesList';
 import SearchNotesForm from '../components/HomeAndArchived-Page/SearchNotesForm';
 import AddPageLink from '../components/HomeAndArchived-Page/AddPageLink';
+import PropTypes from 'prop-types';
 
 function ArchivedNotesPageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -95,5 +96,10 @@ class ArchivedNotesPage extends React.Component {
     );
   }
 }
+
+ArchivedNotesPage.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default ArchivedNotesPageWrapper;

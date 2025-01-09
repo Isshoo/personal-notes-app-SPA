@@ -5,6 +5,7 @@ import { getActiveNotes, deleteNote, archiveNote } from '../utils/local-data';
 import NotesList from '../components/HomeAndArchived-Page/NotesList';
 import SearchNotesForm from '../components/HomeAndArchived-Page/SearchNotesForm';
 import AddPageLink from '../components/HomeAndArchived-Page/AddPageLink';
+import PropTypes from 'prop-types';
 
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -96,5 +97,10 @@ class HomePage extends React.Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default HomePageWrapper;
