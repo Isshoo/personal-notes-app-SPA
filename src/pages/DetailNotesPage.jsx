@@ -1,87 +1,90 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/local-data';
+import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/network-data';
 import NotesDetail from '../components/NoteDetail-Page/NotesDetail';
-import PropTypes from 'prop-types';
 
-function DetailNotesPageWrapper() {
+function DetailNotesPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  return <DetailNotesPage id={id} navigate={navigate} />;
-}
+  const [note, setNote] = useState(null);
 
-class DetailNotesPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      note: getNote(props.id),
-    };
-
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onArchivingHandler = this.onArchivingHandler.bind(this);
-    this.onUnarchivingHandler = this.onUnarchivingHandler.bind(this);
-  }
-
-  onDeleteHandler(id) {
-    Swal.fire({
-      title: 'Apakah Anda yakin?',
-      text: 'Catatan ini akan dihapus secara permanen.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Hapus',
-      cancelButtonText: 'Batal',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteNote(id); // Menghapus catatan
-
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Catatan telah dihapus.',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        }).then(() => {
-          this.props.navigate('/');
-        });
-      }
-    });
-  }
-
-  onArchivingHandler(id) {
-    archiveNote(id);
-    this.props.navigate('/archived');
-  }
-
-  onUnarchivingHandler(id) {
-    unarchiveNote(id);
-    this.props.navigate('/');
-  }
-
-  render() {
-    if (!this.state.note) {
-      return <p>Note is not found!</p>;
+  useEffect(() => {
+    async function fetchNoteData() {
+      const { data } = await getNote(id);
+      setNote(data);
     }
 
-    return (
-      <section className="pages-section">
-        <div className="detail-con">
-          <NotesDetail
-            {...this.state.note}
-            onDelete={this.onDeleteHandler}
-            onArchive={
-              this.state.note.archived ? this.onUnarchivingHandler : this.onArchivingHandler
-            }
-          />
-        </div>
-      </section>
-    );
+    fetchNoteData();
+
+    return () => {
+      setNote(null);
+    };
+  }, [id]);
+
+  async function onDeleteHandler(id) {
+    try {
+      const result = await Swal.fire({
+        title: 'Apakah Anda yakin?',
+        text: 'Catatan ini akan dihapus secara permanen.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal',
+      });
+
+      if (!result.isConfirmed) {
+        return;
+      }
+
+      await deleteNote(id);
+
+      await Swal.fire({
+        title: 'Berhasil!',
+        text: 'Catatan telah dihapus.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+
+      navigate('/');
+    } catch (error) {
+      console.error('Error saat menghapus catatan:', error);
+
+      await Swal.fire({
+        title: 'Gagal!',
+        text: 'Terjadi kesalahan saat menghapus catatan. Silakan coba lagi.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
   }
+
+  async function onArchivingHandler(id) {
+    await archiveNote(id);
+    navigate('/archived');
+  }
+
+  async function onUnarchivingHandler(id) {
+    await unarchiveNote(id);
+    navigate('/');
+  }
+
+  if (!note) {
+    return <p>Note is not found!</p>;
+  }
+
+  return (
+    <section className="pages-section">
+      <div className="detail-con">
+        <NotesDetail
+          {...note}
+          onDelete={onDeleteHandler}
+          onArchive={note.archived ? onUnarchivingHandler : onArchivingHandler}
+        />
+      </div>
+    </section>
+  );
 }
 
-DetailNotesPage.propTypes = {
-  id: PropTypes.string.isRequired,
-  navigate: PropTypes.func.isRequired,
-};
-
-export default DetailNotesPageWrapper;
+export default DetailNotesPage;

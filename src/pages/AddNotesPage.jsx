@@ -1,14 +1,14 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { addNote } from '../utils/local-data';
+import { addNote } from '../utils/network-data';
 import FormAddNotes from '../components/AddNotes-Page/FormAddNotes';
 import { useNavigate } from 'react-router-dom';
 
 function AddNotesPage() {
   const navigate = useNavigate();
 
-  function onAddNoteHandler(note) {
-    addNote(note);
+  async function onAddNoteHandler(note) {
+    await addNote(note);
     Swal.fire({
       title: 'Berhasil!',
       text: 'Catatan baru telah ditambahkan.',

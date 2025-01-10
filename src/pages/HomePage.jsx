@@ -1,106 +1,87 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getActiveNotes, deleteNote, archiveNote } from '../utils/local-data';
+import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
 import NotesList from '../components/HomeAndArchived-Page/NotesList';
 import SearchNotesForm from '../components/HomeAndArchived-Page/SearchNotesForm';
 import AddPageLink from '../components/HomeAndArchived-Page/AddPageLink';
-import PropTypes from 'prop-types';
 
-function HomePageWrapper() {
+function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const keyword = searchParams.get('keyword');
-  function changeSearchParams(keyword) {
+  const [notes, setNotes] = useState([]);
+  const [keyword, setKeyword] = useState(() => {
+    return searchParams.get('keyword') || '';
+  });
+
+  useEffect(() => {
+    getActiveNotes().then(({ data }) => {
+      setNotes(data);
+    });
+  }, []);
+
+  async function onDeleteHandler(id) {
+    try {
+      const result = await Swal.fire({
+        title: 'Apakah Anda yakin?',
+        text: 'Catatan ini akan dihapus secara permanen.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal',
+      });
+
+      if (!result.isConfirmed) {
+        return;
+      }
+
+      await deleteNote(id);
+
+      const { data } = await getActiveNotes();
+      setNotes(data);
+
+      await Swal.fire({
+        title: 'Berhasil!',
+        text: 'Catatan telah dihapus.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } catch (error) {
+      console.error('Error saat menghapus catatan:', error);
+
+      await Swal.fire({
+        title: 'Gagal!',
+        text: 'Terjadi kesalahan saat menghapus catatan. Silakan coba lagi.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+  }
+
+  async function onArchivingHandler(id) {
+    await archiveNote(id);
+
+    const { data } = await getActiveNotes();
+    setNotes(data);
+  }
+
+  function onKeywordChangeHandler(keyword) {
+    setKeyword(keyword);
     setSearchParams({ keyword });
   }
 
-  return <HomePage defaultKeyword={keyword} keywordChange={changeSearchParams} />;
+  const filteredNotes = notes.filter((note) => {
+    return note.title.toLowerCase().includes(keyword.toLowerCase());
+  });
+
+  return (
+    <section className="pages-section">
+      <SearchNotesForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
+      <br />
+      <NotesList notes={filteredNotes} onDelete={onDeleteHandler} onArchive={onArchivingHandler} />
+      <AddPageLink />
+    </section>
+  );
 }
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      notes: getActiveNotes(),
-      keyword: props.defaultKeyword || '',
-    };
-
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onArchivingHandler = this.onArchivingHandler.bind(this);
-    this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
-  }
-
-  onDeleteHandler(id) {
-    Swal.fire({
-      title: 'Apakah Anda yakin?',
-      text: 'Catatan ini akan dihapus secara permanen.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Hapus',
-      cancelButtonText: 'Batal',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteNote(id);
-
-        this.setState(() => {
-          return {
-            notes: getActiveNotes(),
-          };
-        });
-
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Catatan telah dihapus.',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
-      }
-    });
-  }
-
-  onArchivingHandler(id) {
-    archiveNote(id);
-
-    // update the contact state from data.js
-    this.setState(() => {
-      return {
-        notes: getActiveNotes(),
-      };
-    });
-  }
-
-  onKeywordChangeHandler(keyword) {
-    this.setState(() => {
-      return {
-        keyword,
-      };
-    });
-    this.props.keywordChange(keyword);
-  }
-
-  render() {
-    const notes = this.state.notes.filter((note) => {
-      return note.title.toLowerCase().includes(this.state.keyword.toLowerCase());
-    });
-    return (
-      <section className="pages-section">
-        <SearchNotesForm keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
-        <br />
-        <NotesList
-          notes={notes}
-          onDelete={this.onDeleteHandler}
-          onArchive={this.onArchivingHandler}
-        />
-        <AddPageLink />
-      </section>
-    );
-  }
-}
-
-HomePage.propTypes = {
-  defaultKeyword: PropTypes.string,
-  keywordChange: PropTypes.func.isRequired,
-};
-
-export default HomePageWrapper;
+export default HomePage;
