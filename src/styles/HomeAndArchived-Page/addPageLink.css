@@ -31,8 +31,12 @@
   box-shadow: -2px 2px 5px 3px var(--add-btn-shadow);
 }
 #addPageLink a:hover {
-  background-color: var(--add-btn-bg-hover);
+  background-color: var(--add-icon);
   box-shadow: -2px 2px 5px 5px var(--add-btn-shadow);
+
+  svg path {
+    color: var(--add-btn-bg);
+  }
 }
 
 #addPageLink a svg {
@@ -40,7 +44,4 @@
 }
 #addPageLink a svg path {
   color: var(--add-icon);
-}
-#addPageLink a svg path:hover {
-  color: var(--add-icon-hover);
 }

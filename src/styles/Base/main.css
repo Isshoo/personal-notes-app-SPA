@@ -11,7 +11,7 @@
 [data-theme="light"] {
   --primary-text: #212631;
   --secondary-text: #ffffff;
-  --background: #0a0e15;
+  --background: #ffffff;
   --input-background: #e0e4eb;
   --input-text: #212631;
 }
@@ -30,9 +30,11 @@ body {
 }
 
 a {
+  transition: background-color 0.3s ease;
   text-decoration: none;
 }
 li {
+  transition: background-color 0.3s ease;
   list-style: none;
 }
 
@@ -51,6 +53,7 @@ button,
 }
 
 i {
+  transition: color 0.3s ease;
   color: var(--primary-text);
 }
 
@@ -60,6 +63,7 @@ label {
 }
 
 .container {
+  background-color: var(--background);
   width: 100%;
   display: flex;
   flex-direction: column;

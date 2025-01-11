@@ -9,6 +9,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import { LocaleProvider } from './contexts/LocaleContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import HeaderBar from './components/Base/HeaderBar';
+import FooterBar from './components/Base/FooterBar';
 import NavigationBar from './components/Base/NavigationBar';
 import { getUserLogged, putAccessToken } from './utils/network-data';
 
@@ -16,7 +18,7 @@ function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
   const [theme, setTheme] = React.useState('dark');
-  const [locale, setLocale] = React.useState('id');
+  const [locale, setLocale] = React.useState('EN');
 
   React.useEffect(() => {
     async function fetchUserData() {
@@ -43,7 +45,7 @@ function App() {
 
   const toggleLocale = () => {
     setLocale((prevLocale) => {
-      return prevLocale === 'id' ? 'en' : 'id';
+      return prevLocale === 'EN' ? 'ID' : 'EN';
     });
   };
 
@@ -72,11 +74,9 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
-          <div className="container">
+          <div className="container" data-theme={theme === 'dark' ? '' : 'light'}>
             <header>
-              <div className="header-bar">
-                <h1 className="nav-title">Notes App React</h1>
-              </div>
+              <HeaderBar />
             </header>
             <main>
               <Routes>
@@ -85,11 +85,7 @@ function App() {
               </Routes>
             </main>
             <footer>
-              <div className="footer-bar">
-                <p className="text-footer">
-                  &copy; Isshoo&apos;s Notes App React. All rights reserved.
-                </p>
-              </div>
+              <FooterBar />
             </footer>
           </div>
         </ThemeProvider>
@@ -99,11 +95,9 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
-        <div className="container">
+        <div className="container" data-theme={theme === 'dark' ? '' : 'light'}>
           <header>
-            <div className="header-bar">
-              <h1 className="nav-title">Notes App React</h1>
-            </div>
+            <HeaderBar />
             <NavigationBar logout={onLogoutHandler} username={authedUser.name} />
           </header>
           <main>
@@ -116,11 +110,7 @@ function App() {
             </Routes>
           </main>
           <footer>
-            <div className="footer-bar">
-              <p className="text-footer">
-                &copy; Isshoo&apos;s Notes App React. All rights reserved.
-              </p>
-            </div>
+            <FooterBar />
           </footer>
         </div>
       </ThemeProvider>

@@ -15,7 +15,7 @@ function LoginInput({ login }) {
   }
 
   return (
-    <form id="loginForm" className="logreg-form" autoComplete="off" onSubmit={onLogin}>
+    <form id="loginForm" className="logreg-form" autoComplete="on" onSubmit={onLogin}>
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -25,11 +25,9 @@ function LoginInput({ login }) {
           className="email form-input"
           required
           placeholder="Email"
-          aria-describedby="emailValidation"
           value={email}
           onChange={onEmailChange}
         />
-        <p id="emailValidation" className="validation-message" aria-live="polite"></p>
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -41,7 +39,6 @@ function LoginInput({ login }) {
             className="password form-input"
             required
             placeholder="Password"
-            aria-describedby="passwordValidation"
             value={password}
             onChange={onPasswordChange}
           />
@@ -49,7 +46,6 @@ function LoginInput({ login }) {
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
         </div>
-        <p id="passwordValidation" className="validation-message" aria-live="polite"></p>
       </div>
       <button type="submit" id="loginSubmit" className="submit-btn">
         Login

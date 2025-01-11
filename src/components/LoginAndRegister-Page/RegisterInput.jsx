@@ -32,11 +32,9 @@ function RegisterInput({ register }) {
           className="name form-input"
           required
           placeholder="Name"
-          aria-describedby="nameValidation"
           value={name}
           onChange={onNameChange}
         />
-        <p id="nameValidation" className="validation-message" aria-live="polite"></p>
       </div>
       <div>
         <label htmlFor="email">Email</label>
@@ -47,11 +45,9 @@ function RegisterInput({ register }) {
           className="email form-input"
           required
           placeholder="Email"
-          aria-describedby="emailValidation"
           value={email}
           onChange={onEmailChange}
         />
-        <p id="emailValidation" className="validation-message" aria-live="polite"></p>
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -63,7 +59,6 @@ function RegisterInput({ register }) {
             className="password form-input"
             required
             placeholder="Password"
-            aria-describedby="passwordValidation"
             value={password}
             onChange={onPasswordChange}
           ></input>
@@ -71,7 +66,6 @@ function RegisterInput({ register }) {
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
         </div>
-        <p id="passwordValidation" className="validation-message" aria-live="polite"></p>
       </div>
       <div>
         <label htmlFor="confirm-password">Confirm Password</label>
@@ -83,7 +77,6 @@ function RegisterInput({ register }) {
             className="password form-input"
             required
             placeholder="Confirm Password"
-            aria-describedby="confirmPasswordValidation"
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
           ></input>
@@ -91,7 +84,6 @@ function RegisterInput({ register }) {
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
         </div>
-        <p id="confirmPasswordValidation" className="validation-message" aria-live="polite"></p>
       </div>
       <button type="submit" id="registrationSubmit" className="submit-btn">
         Register
