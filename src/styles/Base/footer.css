@@ -1,11 +1,21 @@
+:root {
+  --footer-background: #212631;
+  --footer-text: #f0f1f5;
+}
+
+[data-theme="light"] {
+  --footer-background: #212631;
+  --footer-text: #f0f1f5;
+}
+
 footer {
   width: 100%;
   transition: background-color 0.3s ease;
-  background-color: #212631;
+  background-color: var(--footer-background);
 }
 
 .footer-bar {
-  color: #f0f1f5;
+  color: var(--footer-text);
   padding: 1rem;
   display: flex;
   justify-content: center;

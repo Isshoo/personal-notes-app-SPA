@@ -1,3 +1,23 @@
+:root {
+  --header-background: #212631;
+  --header-text: #f0f1f5;
+  --nav-text: #FFFFFF;
+  --nav-bg: #212631;
+  --nav-bg-hover: #373f4e;
+  --nav-bg-act: #4e576a;
+  --nav-active-bg: #373f4e;
+}
+
+[data-theme="light"] {
+  --header-background: #212631;
+  --header-text: #f0f1f5;
+  --nav-text: #FFFFFF;
+  --nav-bg: #212631;
+  --nav-bg-hover: #373f4e;
+  --nav-bg-act: #4e576a;
+  --nav-active-bg: #373f4e;
+}
+
 header {
   width: 100%;
   transition: background-color 0.3s ease;
@@ -9,8 +29,8 @@ header {
 
 .header-bar {
   width: 100%;
-  background-color: #212631;
-  color: #f0f1f5;
+  background-color: var(--header-background);
+  color: var(--header-text);
   padding: 0.75rem;
   display: flex;
   justify-content: center;
@@ -34,18 +54,18 @@ header {
 .nav-button {
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
-  background-color: #212631;
-  color: #ffffff;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
   cursor: pointer;
   opacity: 0.8;
 }
 .nav-button:hover {
-  background-color: #373f4e;
+  background-color: var(--nav-bg-hover);
 }
 .nav-button:active {
-  background-color: #4e576a;
+  background-color: var(--nav-bg-act);
 }
 .nav-button.active {
-  background-color: #373f4e;
+  background-color: var(--nav-active-bg);
   opacity: 1;
 }

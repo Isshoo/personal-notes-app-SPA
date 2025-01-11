@@ -1,15 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+:root {
+  --primary-text: #212631;
+  --secondary-text: #FFFFFF;
+  --background: #0a0e15;
+  --input-background: #e0e4eb;
+  --input-text: #212631;
+}
+
+[data-theme="light"] {
+  --primary-text: #212631;
+  --secondary-text: #FFFFFF;
+  --background: #0a0e15;
+  --input-background: #e0e4eb;
+  --input-text: #212631;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  color: #ffffff;
+  color: var(--secondary-text);
 }
 
 body {
-  background-color: #0a0e15;
+  background-color: var(--background);
   font-size: 95%;
 }
 
@@ -26,8 +42,8 @@ button,
   border: none;
   outline: none;
   transition: background-color 0.3s ease;
-  background-color: #e0e4eb;
-  color: #212631;
+  background-color: var(--input-background);
+  color: var(--input-text);
 }
 
 #description {
@@ -35,7 +51,7 @@ button,
 }
 
 i {
-  color: #212631;
+  color: var(--primary-text);
 }
 
 label {

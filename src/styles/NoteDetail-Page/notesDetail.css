@@ -1,13 +1,31 @@
+:root {
+  --note-detail-con-bg: #0a0e15;
+  --note-detail-con-border: #212631;
+  --note-detail-con-shadow: rgba(255, 255, 255, 0.2);
+  --note-detail-title: #ffffff;
+  --note-detail-des: #ffffff;
+  --note-detail-date: #ffffffc1;
+}
+
+[data-theme="light"] {
+  --note-detail-con-bg: #0a0e15;
+  --note-detail-con-border: #212631;
+  --note-detail-con-shadow: rgba(255, 255, 255, 0.2);
+  --note-detail-title: #ffffff;
+  --note-detail-des: #ffffff;
+  --note-detail-date: #ffffffc1;
+}
+
 .detail-con {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1.5rem 2rem 2rem;
-  background-color: #0a0e15;
+  background-color: var(--note-detail-con-bg);
   border-radius: 16px;
-  border: 1px solid #212631;
-  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--note-detail-con-border);
+  box-shadow: 0 5px 10px var(--note-detail-con-shadow);
 }
 
 .notes-item.detail {
@@ -23,21 +41,21 @@
 }
 
 .notes-item.detail h3 {
-  color: #ffffff;
+  color: var(--note-detail-title);
   font-size: 2rem;
 }
 
 .note-des.detail p {
-  color: #ffffff;
+  color: var(--note-detail-des);
   font-size: 1.1rem;
 }
 .note-des.detail p b,
 .note-des.detail p strong,
 .note-des.detail p i {
-  color: #ffffff;
+  color: var(--note-detail-des);
 }
 
 .note-date.detail p {
-  color: #ffffffc1;
+  color: var(--note-detail-date);
   font-size: 1rem;
 }

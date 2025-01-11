@@ -1,15 +1,45 @@
 /* form new notes */
 
+:root {
+  --form-background: #0a0e15;
+  --form-border: #212631;
+  --form-shadow: rgba(255, 255, 255, 0.2);
+  --input-background: #e0e4eb;
+  --input-text: #212631;
+  --input-placeholder: #2126319a;
+  --input-validation: #93a7ff;
+  --input-focus: #93a7ff;
+  --submit-text: #FFFFFF;
+  --submit-bg: #212631;
+  --submit-bg-hover: #373f4e;
+  --submit-bg-act: #f0f1f5;
+}
+
+[data-theme="light"] {
+  --form-background: #0a0e15;
+  --form-border: #212631;
+  --form-shadow: rgba(255, 255, 255, 0.2);
+  --input-background: #e0e4eb;
+  --input-text: #212631;
+  --input-placeholder: #2126319a;
+  --input-validation: #93a7ff;
+  --input-focus: #93a7ff;
+  --submit-text: #FFFFFF;
+  --submit-bg: #212631;
+  --submit-bg-hover: #373f4e;
+  --submit-bg-act: #f0f1f5;
+}
+
 #formNewNotes {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1.5rem 2rem 2rem;
-  background-color: #0a0e15;
+  background-color: var(--form-background);
   border-radius: 16px;
-  border: 1px solid #212631;
-  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--form-border);
+  box-shadow: 0 5px 10px var(--form-shadow);
 }
 
 #noteForm {
@@ -29,7 +59,7 @@
 #title::placeholder {
   font-size: 1rem;
   font-weight: 400;
-  color: #2126319a;
+  color: var(--input-placeholder);
   pointer-events: none;
 }
 
@@ -37,24 +67,24 @@
   content: attr(data-placeholder);
   font-weight: 400;
   font-size: 1rem;
-  color: #2126319a;
+  color: var(--input-placeholder);
   pointer-events: none;
 }
 
 #description b,
 #description strong,
 #description i {
-  color: #212631;
+  color: var(--input-text);
 }
 
 .validation-message {
-  color: #93a7ff;
+  color: var(--input-validation);
   margin-block: 0.5rem;
 }
 
 input:focus,
 #description:focus {
-  border: 1px solid #93a7ff;
+  border: 1px solid var(--input-focus);
 }
 
 #notesSubmit {
@@ -65,15 +95,15 @@ input:focus,
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: #212631;
+  background-color: var(--submit-bg);
   font-size: 1rem;
-  color: #ffffff;
+  color: var(--submit-text);
 }
 #notesSubmit:hover {
-  background-color: #373f4e;
+  background-color: var(--submit-bg-hover);
 }
 #notesSubmit:active {
-  background-color: #f0f1f5;
+  background-color: var(--submit-bg-act);
 }
 
 /* form new notes */

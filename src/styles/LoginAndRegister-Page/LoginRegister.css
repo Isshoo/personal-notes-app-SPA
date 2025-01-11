@@ -1,0 +1,29 @@
+:root {
+  --form-background: #0a0e15;
+  --form-border: #212631;
+  --form-shadow: rgba(255, 255, 255, 0.2);
+  --input-background: #e0e4eb;
+  --input-text: #212631;
+  --input-placeholder: #2126319a;
+  --input-validation: #93a7ff;
+  --input-focus: #93a7ff;
+  --submit-text: #FFFFFF;
+  --submit-bg: #212631;
+  --submit-bg-hover: #373f4e;
+  --submit-bg-act: #f0f1f5;
+}
+
+[data-theme="light"] {
+  --form-background: #0a0e15;
+  --form-border: #212631;
+  --form-shadow: rgba(255, 255, 255, 0.2);
+  --input-background: #e0e4eb;
+  --input-text: #212631;
+  --input-placeholder: #2126319a;
+  --input-validation: #93a7ff;
+  --input-focus: #93a7ff;
+  --submit-text: #FFFFFF;
+  --submit-bg: #212631;
+  --submit-bg-hover: #373f4e;
+  --submit-bg-act: #f0f1f5;
+}

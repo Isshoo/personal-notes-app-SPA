@@ -1,3 +1,19 @@
+:root {
+  --add-btn-bg: #ffffffdf;
+  --add-btn-bg-hover: #FFFFFF;
+  --add-btn-shadow: rgba(0, 0, 0, 0.5);
+  --add-icon: #212631;
+  --add-icon-hover: #101217;
+}
+
+[data-theme="light"] {
+  --add-btn-bg: #ffffffdf;
+  --add-btn-bg-hover: #FFFFFF;
+  --add-btn-shadow: rgba(0, 0, 0, 0.5);
+  --add-icon: #212631;
+  --add-icon-hover: #101217;
+}
+
 #addPageLink {
   bottom: 32px;
   display: flex;
@@ -6,25 +22,25 @@
 }
 
 #addPageLink a {
-  background-color: #ffffffdf;
+  background-color: var(--add-btn-bg);
   border-radius: 100%;
   padding: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  box-shadow: -2px 2px 5px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: -2px 2px 5px 3px var(--add-btn-shadow);
 }
 #addPageLink a:hover {
-  background-color: #ffffff;
-  box-shadow: -2px 2px 5px 5px rgba(0, 0, 0, 0.5);
+  background-color: var(--add-btn-bg-hover);
+  box-shadow: -2px 2px 5px 5px var(--add-btn-shadow);
 }
 
 #addPageLink a svg {
   font-size: 1.5rem;
 }
 #addPageLink a svg path {
-  color: #212631;
+  color: var(--add-icon);
 }
 #addPageLink a svg path:hover {
-  color: #101217;
+  color: var(--add-icon-hover);
 }
