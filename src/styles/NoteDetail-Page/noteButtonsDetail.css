@@ -4,6 +4,9 @@
   --note-detail-btn: #ffffff;
   --note-detail-btn-hover: #455068;
   --note-detail-btn-act: #0a0e15;
+  --archive-content: "Archive Note";
+  --unarchive-content: "Unarchive Note";
+  --delete-content: "Delete Note";
 }
 
 [data-theme="light"] {
@@ -12,6 +15,11 @@
   --note-detail-btn: #ffffff;
   --note-detail-btn-hover: #455068;
   --note-detail-btn-act: #0a0e15;
+}
+[data-lang="ID"] {
+  --archive-content: "Arsipkan Catatan";
+  --unarchive-content: "Buka Ulang Catatan";
+  --delete-content: "Hapus Catatan";
 }
 
 .buttons.detail {
@@ -34,16 +42,16 @@
   transform: translateX(-30%) translateY(-1.1rem);
 }
 
-.btn-archive.detail::after {
-  content: "Arsipkan Catatan";
+.btn-archive::after {
+  content: var(--archive-content);
 }
 
-.btn-unarchive.detail::after {
-  content: "Batalkan Arsip";
+.btn-unarchive::after {
+  content: var(--unarchive-content);
 }
 
-.btn-delete.detail::after {
-  content: "Hapus Catatan";
+.btn-delete::after {
+  content: var(--delete-content);
 }
 
 .btn-archive.detail svg,

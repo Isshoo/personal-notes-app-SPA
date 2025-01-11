@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import useInput from '../../hooks/useInput';
 import useVisibility from '../../hooks/useVisibility';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function LoginInput({ login }) {
+  const { locale } = useContext(LocaleContext);
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const [showPassword, setShowPassword] = useVisibility(false);
@@ -48,7 +50,7 @@ function LoginInput({ login }) {
         </div>
       </div>
       <button type="submit" id="loginSubmit" className="submit-btn">
-        Login
+        {locale === 'EN' ? 'Login' : 'Masuk'}
       </button>
     </form>
   );

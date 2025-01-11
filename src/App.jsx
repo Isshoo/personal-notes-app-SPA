@@ -74,7 +74,11 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
-          <div className="container" data-theme={theme === 'dark' ? '' : 'light'}>
+          <div
+            className="container"
+            data-theme={theme === 'dark' ? '' : 'light'}
+            data-lang={locale === 'EN' ? '' : 'ID'}
+          >
             <header>
               <HeaderBar />
             </header>
@@ -95,7 +99,11 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
-        <div className="container" data-theme={theme === 'dark' ? '' : 'light'}>
+        <div
+          className="container"
+          data-theme={theme === 'dark' ? '' : 'light'}
+          data-lang={locale === 'EN' ? '' : 'ID'}
+        >
           <header>
             <HeaderBar />
             <NavigationBar logout={onLogoutHandler} username={authedUser.name} />

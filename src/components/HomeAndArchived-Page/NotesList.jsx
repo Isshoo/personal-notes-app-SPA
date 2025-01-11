@@ -2,6 +2,7 @@ import React from 'react';
 import NotesItem from './NotesItem';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { LocaleConsumer } from '../../contexts/LocaleContext';
 
 function NotesList({ notes, onDelete, onArchive }) {
   const location = useLocation();
@@ -19,9 +20,22 @@ function NotesList({ notes, onDelete, onArchive }) {
             />
           ))
         ) : (
-          <div className="blankList">
-            {location.pathname === '/' ? 'Tidak ada catatan' : 'Arsip kosong'}
-          </div>
+          <LocaleConsumer>
+            {({ locale }) => {
+              if (locale === 'EN') {
+                return (
+                  <div className="blankList">
+                    {location.pathname === '/' ? 'No notes' : 'Archive is empty'}
+                  </div>
+                );
+              }
+              return (
+                <div className="blankList">
+                  {location.pathname === '/' ? 'Tidak ada catatan' : 'Arsip kosong'}
+                </div>
+              );
+            }}
+          </LocaleConsumer>
         )}
       </div>
     </>

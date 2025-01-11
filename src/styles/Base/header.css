@@ -73,6 +73,9 @@ header {
 }
 
 .nav-button {
+  display: flex;
+  justify-content: center;
+  min-width: 115px;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   background-color: var(--nav-bg);

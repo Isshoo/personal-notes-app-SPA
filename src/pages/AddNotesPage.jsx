@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { addNote } from '../utils/network-data';
 import FormAddNotes from '../components/AddNotes-Page/FormAddNotes';
 import { useNavigate } from 'react-router-dom';
+import LocaleContext from '../contexts/LocaleContext';
 
 function AddNotesPage() {
   const navigate = useNavigate();
+  const { locale } = useContext(LocaleContext);
 
   async function onAddNoteHandler(note) {
     await addNote(note);
@@ -22,7 +24,7 @@ function AddNotesPage() {
   return (
     <section className="pages-section">
       <div id="formNewNotes" className="form-container">
-        <h2>New Notes</h2>
+        <h2>{locale === 'EN' ? 'New Notes' : 'Catatan Baru'}</h2>
         <FormAddNotes addNote={onAddNoteHandler} />
       </div>
     </section>

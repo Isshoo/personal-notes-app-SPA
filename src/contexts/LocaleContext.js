@@ -9,9 +9,11 @@ export default LocaleContext;
 
 // <LocaleConsumer>
 //    {({ locale, toggleLocale }) => {
-//      
+//      return (
+//
+//      )
 //    }}
-//  </LocaleConsumer>; 
+//  </LocaleConsumer> 
 
 //  <LocaleConsumer>
 //     {({ locale, toggleLocale }) => {
@@ -23,4 +25,4 @@ export default LocaleContext;
 //         </ThemeConsumer>
 //       )
 //     }}
-// </LocaleConsumer>; 
+// </LocaleConsumer> 
