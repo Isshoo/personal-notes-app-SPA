@@ -6,6 +6,7 @@
   --nav-bg-hover: #373f4e;
   --nav-bg-act: #4e576a;
   --nav-active-bg: #373f4e;
+  --logout-text-hover: #93a7ff;
 }
 
 [data-theme="light"] {
@@ -43,6 +44,7 @@ header {
   padding-inline: 8%;
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 .navigation {
   width: 100%;
@@ -68,4 +70,40 @@ header {
 .nav-button.active {
   background-color: var(--nav-active-bg);
   opacity: 1;
+}
+
+.logout {
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logout p {
+  color: var(--nav-text);
+  font-size: 1.1rem;
+}
+.logout svg {
+  font-size: 1.25rem;
+  path, polyline, line {
+    color: var(--nav-text);
+  }
+}
+
+.logout:hover {
+  p, svg polyline, svg line {
+    color: var(--logout-text-hover);
+  }
+}
+
+
+@media screen and (max-width: 355px) {
+  .navigation-bar {
+    flex-direction: column-reverse;
+  }
+  .logout {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }

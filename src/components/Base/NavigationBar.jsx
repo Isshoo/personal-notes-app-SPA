@@ -27,12 +27,10 @@ function NavigationBar({ logout, username }) {
             Archived
           </Link>
         </li>
-        <li>
-          <button onClick={logout}>
-            {username} <FiLogOut />
-          </button>
-        </li>
       </ul>
+      <button className="logout" onClick={logout}>
+        <p>{username}</p> <FiLogOut />
+      </button>
     </nav>
   );
 }
