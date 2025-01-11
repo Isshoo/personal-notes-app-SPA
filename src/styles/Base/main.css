@@ -2,7 +2,7 @@
 
 :root {
   --primary-text: #212631;
-  --secondary-text: #FFFFFF;
+  --secondary-text: #ffffff;
   --background: #0a0e15;
   --input-background: #e0e4eb;
   --input-text: #212631;
@@ -10,7 +10,7 @@
 
 [data-theme="light"] {
   --primary-text: #212631;
-  --secondary-text: #FFFFFF;
+  --secondary-text: #ffffff;
   --background: #0a0e15;
   --input-background: #e0e4eb;
   --input-text: #212631;

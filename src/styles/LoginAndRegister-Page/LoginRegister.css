@@ -7,10 +7,11 @@
   --input-placeholder: #2126319a;
   --input-validation: #93a7ff;
   --input-focus: #93a7ff;
-  --submit-text: #FFFFFF;
+  --submit-text: #ffffff;
   --submit-bg: #212631;
   --submit-bg-hover: #373f4e;
   --submit-bg-act: #f0f1f5;
+  --link-hover: #93a7ff;
 }
 
 [data-theme="light"] {
@@ -22,8 +23,94 @@
   --input-placeholder: #2126319a;
   --input-validation: #93a7ff;
   --input-focus: #93a7ff;
-  --submit-text: #FFFFFF;
+  --submit-text: #ffffff;
   --submit-bg: #212631;
   --submit-bg-hover: #373f4e;
   --submit-bg-act: #f0f1f5;
+  --link-hover: #93a7ff;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem 2rem;
+  background-color: var(--form-background);
+  border-radius: 16px;
+  border: 1px solid var(--form-border);
+  box-shadow: 0 5px 10px var(--form-shadow);
+}
+
+.logreg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.form-input::placeholder {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--input-placeholder);
+  pointer-events: none;
+}
+input {
+  border: 1px solid transparent;
+}
+input:focus {
+  border: 1px solid var(--input-focus);
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container .toggle-password {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+
+  svg path {
+    color: var(--input-text);
+  }
+}
+
+.submit-btn {
+  align-self: flex-end;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--submit-bg);
+  font-size: 1rem;
+  color: var(--submit-text);
+}
+.submit-btn:hover {
+  background-color: var(--submit-bg-hover);
+}
+.submit-btn:active {
+  background-color: var(--submit-bg-act);
+}
+
+.form-container p a {
+  text-decoration: underline;
+}
+.form-container p a:hover {
+  color: var(--link-hover);
 }

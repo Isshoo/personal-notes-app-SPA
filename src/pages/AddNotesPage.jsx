@@ -21,7 +21,7 @@ function AddNotesPage() {
 
   return (
     <section className="pages-section">
-      <div id="formNewNotes">
+      <div id="formNewNotes" className="form-container">
         <h2>New Notes</h2>
         <FormAddNotes addNote={onAddNoteHandler} />
       </div>

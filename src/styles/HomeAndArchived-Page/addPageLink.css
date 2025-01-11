@@ -1,6 +1,6 @@
 :root {
   --add-btn-bg: #ffffffdf;
-  --add-btn-bg-hover: #FFFFFF;
+  --add-btn-bg-hover: #ffffff;
   --add-btn-shadow: rgba(0, 0, 0, 0.5);
   --add-icon: #212631;
   --add-icon-hover: #101217;
@@ -8,7 +8,7 @@
 
 [data-theme="light"] {
   --add-btn-bg: #ffffffdf;
-  --add-btn-bg-hover: #FFFFFF;
+  --add-btn-bg-hover: #ffffff;
   --add-btn-shadow: rgba(0, 0, 0, 0.5);
   --add-icon: #212631;
   --add-icon-hover: #101217;

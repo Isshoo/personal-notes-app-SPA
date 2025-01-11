@@ -1,7 +1,7 @@
 :root {
   --header-background: #212631;
   --header-text: #f0f1f5;
-  --nav-text: #FFFFFF;
+  --nav-text: #ffffff;
   --nav-bg: #212631;
   --nav-bg-hover: #373f4e;
   --nav-bg-act: #4e576a;
@@ -12,7 +12,7 @@
 [data-theme="light"] {
   --header-background: #212631;
   --header-text: #f0f1f5;
-  --nav-text: #FFFFFF;
+  --nav-text: #ffffff;
   --nav-bg: #212631;
   --nav-bg-hover: #373f4e;
   --nav-bg-act: #4e576a;
@@ -86,17 +86,20 @@ header {
 }
 .logout svg {
   font-size: 1.25rem;
-  path, polyline, line {
+  path,
+  polyline,
+  line {
     color: var(--nav-text);
   }
 }
 
 .logout:hover {
-  p, svg polyline, svg line {
+  p,
+  svg polyline,
+  svg line {
     color: var(--logout-text-hover);
   }
 }
-
 
 @media screen and (max-width: 355px) {
   .navigation-bar {
