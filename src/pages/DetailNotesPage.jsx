@@ -1,13 +1,15 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/network-data';
 import NotesDetail from '../components/NoteDetail-Page/NotesDetail';
+import LocaleContext from '../contexts/LocaleContext';
 
 function DetailNotesPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { locale } = useContext(LocaleContext);
   const [note, setNote] = useState(null);
 
   useEffect(() => {
@@ -71,7 +73,11 @@ function DetailNotesPage() {
   }
 
   if (!note) {
-    return <p>Note is not found!</p>;
+    return (
+      <p className="blank-note">
+        {locale === 'EN' ? 'Note is not found!' : 'Catatan tidak ditemukan!'}
+      </p>
+    );
   }
 
   return (

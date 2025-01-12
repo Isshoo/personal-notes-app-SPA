@@ -97,6 +97,7 @@ main {
   text-align: center;
 }
 .notFound-container h1,
-.notFound-container p {
+.notFound-container p,
+.blank-note {
   color: var(--notfound-text);
 }
