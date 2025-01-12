@@ -1,6 +1,6 @@
 import React from 'react';
 import { showFormattedDate } from '../../utils';
-import NoteButtons from '../HomeAndArchived-Page/NoteButtons';
+import NoteButtons from '../Base/NoteButtons';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
 

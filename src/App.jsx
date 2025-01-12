@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ArchivedNotesPage from './pages/ArchivedNotesPage';
@@ -9,60 +9,48 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import { LocaleProvider } from './contexts/LocaleContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import useLocale from './hooks/useLocale';
+import useTheme from './hooks/useTheme';
 import HeaderBar from './components/Base/HeaderBar';
 import FooterBar from './components/Base/FooterBar';
+import LoadingBar from './components/Base/LoadingBar';
 import NavigationBar from './components/Base/NavigationBar';
 import { getUserLogged, putAccessToken } from './utils/network-data';
 
 function App() {
-  const [authedUser, setAuthedUser] = React.useState(null);
-  const [initializing, setInitializing] = React.useState(true);
-  const [theme, setTheme] = React.useState(() => localStorage.getItem('theme') || 'dark');
-  const [locale, setLocale] = React.useState(() => localStorage.getItem('locale') || 'EN');
+  const [authedUser, setAuthedUser] = useState(null);
+  const [initializing, setInitializing] = useState(true);
+  const [theme, toggleTheme] = useTheme();
+  const [locale, toggleLocale] = useLocale();
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function fetchUserData() {
-      const { data } = await getUserLogged();
-      setAuthedUser(data);
-      setInitializing(false);
+      try {
+        const { data } = await getUserLogged();
+        setAuthedUser(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setInitializing(false);
+      }
     }
 
     fetchUserData();
   }, []);
 
-  React.useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  React.useEffect(() => {
-    localStorage.setItem('locale', locale);
-  }, [locale]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      return prevTheme === 'dark' ? 'light' : 'dark';
-    });
-  };
-
-  const themeContextValue = React.useMemo(() => {
+  const themeContextValue = useMemo(() => {
     return {
       theme,
       toggleTheme,
     };
-  }, [theme]);
+  }, [theme, toggleTheme]);
 
-  const toggleLocale = () => {
-    setLocale((prevLocale) => {
-      return prevLocale === 'EN' ? 'ID' : 'EN';
-    });
-  };
-
-  const localeContextValue = React.useMemo(() => {
+  const localeContextValue = useMemo(() => {
     return {
       locale,
       toggleLocale,
     };
-  }, [locale]);
+  }, [locale, toggleLocale]);
 
   async function onLoginSuccess({ accessToken }) {
     putAccessToken(accessToken);
@@ -76,7 +64,7 @@ function App() {
   }
 
   if (initializing) {
-    return null;
+    return <LoadingBar />;
   }
   if (!authedUser) {
     return (

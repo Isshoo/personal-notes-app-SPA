@@ -1,18 +1,15 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { getArchivedNotes, deleteNote, unarchiveNote } from '../utils/network-data';
 import NotesList from '../components/HomeAndArchived-Page/NotesList';
 import SearchNotesForm from '../components/HomeAndArchived-Page/SearchNotesForm';
 import AddPageLink from '../components/HomeAndArchived-Page/AddPageLink';
+import useSearch from '../hooks/useSearch';
 
 function ArchivedNotesPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [notes, setNotes] = useState([]);
-  const [keyword, setKeyword] = useState(() => {
-    return searchParams.get('keyword') || '';
-  });
+  const [keyword, onKeywordChangeHandler] = useSearch();
 
   useEffect(() => {
     getArchivedNotes().then(({ data }) => {
@@ -63,11 +60,6 @@ function ArchivedNotesPage() {
 
     const { data } = await getArchivedNotes();
     setNotes(data);
-  }
-
-  function onKeywordChangeHandler(keyword) {
-    setKeyword(keyword);
-    setSearchParams({ keyword });
   }
 
   const filteredNotes = notes.filter((note) => {

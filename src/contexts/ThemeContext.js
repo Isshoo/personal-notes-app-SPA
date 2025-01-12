@@ -6,9 +6,3 @@ export const ThemeProvider = ThemeContext.Provider;
 export const ThemeConsumer = ThemeContext.Consumer;
  
 export default ThemeContext;
-
-// <ThemeConsumer>
-//    {({ theme, toggleTheme }) => {
-//      
-//    }}
-//  </ThemeConsumer>;

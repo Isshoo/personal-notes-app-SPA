@@ -1,5 +1,5 @@
 import React from 'react';
-import NoteButtons from './NoteButtons';
+import NoteButtons from '../Base/NoteButtons';
 import { Link } from 'react-router-dom';
 import { showFormattedDate } from '../../utils';
 import PropTypes from 'prop-types';

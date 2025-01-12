@@ -2,6 +2,7 @@
 import './Base/main.css';
 import './Base/header.css';
 import './Base/footer.css';
+import './Base/loading.css'
 import './HomeAndArchived-Page/notesList.css';
 import './HomeAndArchived-Page/notesItem.css';
 import './HomeAndArchived-Page/searchBar.css';
