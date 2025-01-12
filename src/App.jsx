@@ -14,78 +14,129 @@ import FooterBar from './components/Base/FooterBar';
 import NavigationBar from './components/Base/NavigationBar';
 import { getUserLogged, putAccessToken } from './utils/network-data';
 
-function App() {
-  const [authedUser, setAuthedUser] = React.useState(null);
-  const [initializing, setInitializing] = React.useState(true);
-  const [theme, setTheme] = React.useState('dark');
-  const [locale, setLocale] = React.useState('EN');
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  React.useEffect(() => {
-    async function fetchUserData() {
-      const { data } = await getUserLogged();
-      setAuthedUser(data);
-      setInitializing(false);
-    }
-
-    fetchUserData();
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      return prevTheme === 'dark' ? 'light' : 'dark';
-    });
-  };
-
-  const themeContextValue = React.useMemo(() => {
-    return {
-      theme,
-      toggleTheme,
+    this.state = {
+      authedUser: null,
+      initializing: true,
+      localeContext: {
+        locale: localStorage.getItem('locale') || 'EN',
+        toggleLocale: () => {
+          this.setState((prevState) => {
+            const newLocale = prevState.localeContext.locale === 'EN' ? 'ID' : 'EN';
+            localStorage.setItem('locale', newLocale);
+            return {
+              localeContext: {
+                ...prevState.localeContext,
+                locale: newLocale,
+              },
+            };
+          });
+        },
+      },
+      themeContext: {
+        theme: localStorage.getItem('theme') || 'dark',
+        toggleTheme: () => {
+          this.setState((prevState) => {
+            const newTheme = prevState.themeContext.theme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            return {
+              themeContext: {
+                ...prevState.themeContext,
+                theme: newTheme,
+              },
+            };
+          });
+        },
+      },
     };
-  }, [theme]);
 
-  const toggleLocale = () => {
-    setLocale((prevLocale) => {
-      return prevLocale === 'EN' ? 'ID' : 'EN';
-    });
-  };
-
-  const localeContextValue = React.useMemo(() => {
-    return {
-      locale,
-      toggleLocale,
-    };
-  }, [locale]);
-
-  async function onLoginSuccess({ accessToken }) {
-    putAccessToken(accessToken);
-    const { data } = await getUserLogged();
-    setAuthedUser(data);
+    this.onLoginSuccess = this.onLoginSuccess.bind(this);
+    this.onLogoutHandler = this.onLogoutHandler.bind(this);
   }
 
-  async function onLogoutHandler() {
-    setAuthedUser(null);
+  async componentDidMount() {
+    const { data } = await getUserLogged();
+    this.setState(() => {
+      return {
+        authedUser: data,
+        initializing: false,
+      };
+    });
+  }
+
+  async onLoginSuccess({ accessToken }) {
+    putAccessToken(accessToken);
+    const { data } = await getUserLogged();
+    this.setState(() => {
+      return {
+        authedUser: data,
+      };
+    });
+  }
+
+  onLogoutHandler() {
+    this.setState(() => {
+      return {
+        authedUser: null,
+      };
+    });
     putAccessToken('');
   }
 
-  if (initializing) {
-    return null;
-  }
-  if (!authedUser) {
+  render() {
+    if (this.state.initializing) {
+      return null;
+    }
+
+    if (this.state.authedUser === null) {
+      return (
+        <LocaleProvider value={this.state.localeContext}>
+          <ThemeProvider value={this.state.themeContext}>
+            <div
+              className="container"
+              data-theme={this.state.themeContext.theme === 'dark' ? '' : 'light'}
+              data-lang={this.state.localeContext.locale === 'EN' ? '' : 'ID'}
+            >
+              <header>
+                <HeaderBar />
+              </header>
+              <main>
+                <Routes>
+                  <Route path="/*" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                </Routes>
+              </main>
+              <footer>
+                <FooterBar />
+              </footer>
+            </div>
+          </ThemeProvider>
+        </LocaleProvider>
+      );
+    }
+
     return (
-      <LocaleProvider value={localeContextValue}>
-        <ThemeProvider value={themeContextValue}>
+      <LocaleProvider value={this.state.localeContext}>
+        <ThemeProvider value={this.state.themeContext}>
           <div
             className="container"
-            data-theme={theme === 'dark' ? '' : 'light'}
-            data-lang={locale === 'EN' ? '' : 'ID'}
+            data-theme={this.state.themeContext.theme === 'dark' ? '' : 'light'}
+            data-lang={this.state.localeContext.locale === 'EN' ? '' : 'ID'}
           >
             <header>
               <HeaderBar />
+              <NavigationBar logout={this.onLogoutHandler} username={this.state.authedUser.name} />
             </header>
             <main>
               <Routes>
-                <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccess} />} />
-                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/archived" element={<ArchivedNotesPage />} />
+                <Route path="/notes/new" element={<AddNotesPage />} />
+                <Route path="/notes/:id" element={<DetailNotesPage />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </main>
             <footer>
@@ -96,34 +147,6 @@ function App() {
       </LocaleProvider>
     );
   }
-  return (
-    <LocaleProvider value={localeContextValue}>
-      <ThemeProvider value={themeContextValue}>
-        <div
-          className="container"
-          data-theme={theme === 'dark' ? '' : 'light'}
-          data-lang={locale === 'EN' ? '' : 'ID'}
-        >
-          <header>
-            <HeaderBar />
-            <NavigationBar logout={onLogoutHandler} username={authedUser.name} />
-          </header>
-          <main>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/archived" element={<ArchivedNotesPage />} />
-              <Route path="/notes/new" element={<AddNotesPage />} />
-              <Route path="/notes/:id" element={<DetailNotesPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
-          <footer>
-            <FooterBar />
-          </footer>
-        </div>
-      </ThemeProvider>
-    </LocaleProvider>
-  );
 }
 
 export default App;
