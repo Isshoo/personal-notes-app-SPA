@@ -3,9 +3,11 @@
   --header-text: #f0f1f5;
   --nav-text: #ffffff;
   --nav-bg: #212631;
+  --nav-border: #212631;
   --nav-bg-hover: #373f4e;
   --nav-bg-act: #4e576a;
   --nav-active-bg: #373f4e;
+  --logout-text: #ffffff;
   --logout-text-hover: #93a7ff;
 }
 
@@ -14,9 +16,12 @@
   --header-text: #f0f1f5;
   --nav-text: #ffffff;
   --nav-bg: #212631;
-  --nav-bg-hover: #373f4e;
+  --nav-border: #212631;
+  --nav-bg-hover: #0a0e15;
   --nav-bg-act: #4e576a;
-  --nav-active-bg: #373f4e;
+  --nav-active-bg: #212631;
+  --logout-text: #000;
+  --logout-text-hover: #3b5efa;
 }
 
 header {
@@ -32,7 +37,7 @@ header {
   width: 100%;
   padding-inline: 32px;
   background-color: var(--header-background);
-  padding-block: 0.75rem;
+  padding-block: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,7 +86,8 @@ header {
   background-color: var(--nav-bg);
   color: var(--nav-text);
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.9;
+  border: 1px solid var(--nav-border);
 }
 .nav-button:hover {
   background-color: var(--nav-bg-hover);
@@ -103,15 +109,17 @@ header {
 }
 
 .logout p {
-  color: var(--nav-text);
-  font-size: 1.1rem;
+  color: var(--logout-text);
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 .logout svg {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  font-weight: 500;
   path,
   polyline,
   line {
-    color: var(--nav-text);
+    color: var(--logout-text);
   }
 }
 

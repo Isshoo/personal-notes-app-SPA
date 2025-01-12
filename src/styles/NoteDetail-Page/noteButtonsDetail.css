@@ -12,8 +12,8 @@
 [data-theme="light"] {
   --note-detail-message-bg: #333;
   --note-detail-message-text: #fff;
-  --note-detail-btn: #ffffff;
-  --note-detail-btn-hover: #455068;
+  --note-detail-btn: #212631;
+  --note-detail-btn-hover: #0a0e15;
   --note-detail-btn-act: #0a0e15;
 }
 [data-lang="ID"] {

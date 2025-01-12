@@ -6,14 +6,16 @@
   --background: #0a0e15;
   --input-background: #e0e4eb;
   --input-text: #212631;
+  --notfound-text: #ffffff;
 }
 
 [data-theme="light"] {
   --primary-text: #212631;
   --secondary-text: #ffffff;
-  --background: #ffffff;
+  --background: #f0f1f5;
   --input-background: #e0e4eb;
   --input-text: #212631;
+  --notfound-text: #212631;
 }
 
 * {
@@ -93,4 +95,8 @@ main {
   align-items: center;
   gap: 0.5rem;
   text-align: center;
+}
+.notFound-container h1,
+.notFound-container p {
+  color: var(--notfound-text);
 }

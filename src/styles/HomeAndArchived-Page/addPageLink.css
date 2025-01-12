@@ -7,10 +7,10 @@
 }
 
 [data-theme="light"] {
-  --add-btn-bg: #ffffffdf;
+  --add-btn-bg: #101217;
   --add-btn-bg-hover: #ffffff;
-  --add-btn-shadow: rgba(0, 0, 0, 0.5);
-  --add-icon: #212631;
+  --add-btn-shadow: rgba(0, 0, 0, 0.305);
+  --add-icon: #ffffff;
   --add-icon-hover: #101217;
 }
 

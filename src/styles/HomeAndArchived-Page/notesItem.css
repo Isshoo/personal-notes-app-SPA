@@ -10,14 +10,14 @@
 }
 
 [data-theme="light"] {
-  --note-item-border: #212631;
+  --note-item-border: #ffffff;
   --note-item-shadow: rgba(0, 0, 0, 0.2);
-  --note-item-bg: #e0e4eb;
-  --note-item-bg-hover: #ffffff;
-  --note-item-title: #0a0e15;
-  --note-item-title-hover: #1f46a6;
-  --note-item-des: #212631;
-  --note-item-date: #212631cd;
+  --note-item-bg: #0a0e15;
+  --note-item-bg-hover: #0a0e15;
+  --note-item-title: #ffffff;
+  --note-item-title-hover: #799bf1;
+  --note-item-des: #ffffff;
+  --note-item-date: #ffffffc1;
 }
 
 .note {

@@ -16,16 +16,16 @@
 }
 
 [data-theme="light"] {
-  --form-background: #0a0e15;
+  --form-background: #212631;
   --form-border: #212631;
-  --form-shadow: rgba(255, 255, 255, 0.2);
+  --form-shadow: rgb(0, 0, 0);
   --input-background: #e0e4eb;
   --input-text: #212631;
   --input-placeholder: #2126319a;
   --input-focus: #93a7ff;
   --submit-text: #ffffff;
-  --submit-bg: #212631;
-  --submit-bg-hover: #373f4e;
+  --submit-bg: #0a0e15;
+  --submit-bg-hover: #000000;
   --submit-bg-act: #f0f1f5;
   --question-text: #e0e4eb;
   --link-text: #ffffff;

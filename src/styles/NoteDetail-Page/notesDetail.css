@@ -8,12 +8,12 @@
 }
 
 [data-theme="light"] {
-  --note-detail-con-bg: #0a0e15;
+  --note-detail-con-bg: #ffffff;
   --note-detail-con-border: #212631;
-  --note-detail-con-shadow: rgba(255, 255, 255, 0.2);
-  --note-detail-title: #ffffff;
-  --note-detail-des: #ffffff;
-  --note-detail-date: #ffffffc1;
+  --note-detail-con-shadow: rgba(0, 0, 0, 0.2);
+  --note-detail-title: #212631;
+  --note-detail-des: #212631;
+  --note-detail-date: #212631cd;
 }
 
 .detail-con {
