@@ -5,17 +5,20 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/network-data';
 import NotesDetail from '../components/NoteDetail-Page/NotesDetail';
 import LocaleContext from '../contexts/LocaleContext';
+import LoadingBar from '../components/Base/LoadingBar';
 
 function DetailNotesPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { locale } = useContext(LocaleContext);
   const [note, setNote] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchNoteData() {
       const { data } = await getNote(id);
       setNote(data);
+      setLoading(false);
     }
 
     fetchNoteData();
@@ -70,6 +73,9 @@ function DetailNotesPage() {
   async function onUnarchivingHandler(id) {
     await unarchiveNote(id);
     navigate('/');
+  }
+  if (loading) {
+    return <LoadingBar />;
   }
 
   if (!note) {

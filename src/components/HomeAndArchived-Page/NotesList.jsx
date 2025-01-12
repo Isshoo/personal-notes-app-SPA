@@ -3,9 +3,14 @@ import NotesItem from './NotesItem';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
+import LoadingBar from '../Base/LoadingBar';
 
-function NotesList({ notes, onDelete, onArchive }) {
+function NotesList({ notes, onDelete, onArchive, loading }) {
   const location = useLocation();
+
+  if (loading) {
+    return <LoadingBar />;
+  }
   return (
     <>
       <div className="notes-list">
@@ -54,6 +59,7 @@ NotesList.propTypes = {
   ),
   onDelete: PropTypes.func.isRequired,
   onArchive: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default NotesList;

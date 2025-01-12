@@ -1,3 +1,13 @@
+:root {
+  --spin-line: rgb(255, 255, 255);
+  --spin-shadow: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] {
+  --spin-line: rgb(0, 0, 0);
+  --spin-shadow: rgba(255, 255, 255, 0.2);
+}
+
 .pageload {
   position: fixed;
   top: 0;
@@ -17,13 +27,13 @@
   width: 100px;
   height: 100px;
   background: transparent;
-  box-shadow: 0 4px 0 rgb(255, 255, 255);
+  box-shadow: 0 4px 0 var(--spin-line);
   animation: animate 1s linear infinite;
 }
 .pageRing {
   border-radius: 50%;
   background: transparent;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--spin-shadow);
   position: absolute;
   width: 100%;
   height: 100%;

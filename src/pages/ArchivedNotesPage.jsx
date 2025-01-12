@@ -9,11 +9,13 @@ import useSearch from '../hooks/useSearch';
 
 function ArchivedNotesPage() {
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [keyword, onKeywordChangeHandler] = useSearch();
 
   useEffect(() => {
     getArchivedNotes().then(({ data }) => {
       setNotes(data);
+      setLoading(false);
     });
   }, []);
 
@@ -74,6 +76,7 @@ function ArchivedNotesPage() {
         notes={filteredNotes}
         onDelete={onDeleteHandler}
         onArchive={onUnarchivingHandler}
+        loading={loading}
       />
       <AddPageLink />
     </section>

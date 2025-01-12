@@ -64,7 +64,7 @@ function App() {
   }
 
   if (initializing) {
-    return <LoadingBar />;
+    return null;
   }
   if (!authedUser) {
     return (

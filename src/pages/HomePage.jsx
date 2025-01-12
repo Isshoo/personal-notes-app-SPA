@@ -9,11 +9,13 @@ import useSearch from '../hooks/useSearch';
 
 function HomePage() {
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [keyword, onKeywordChangeHandler] = useSearch();
 
   useEffect(() => {
     getActiveNotes().then(({ data }) => {
       setNotes(data);
+      setLoading(false);
     });
   }, []);
 
@@ -70,7 +72,12 @@ function HomePage() {
     <section className="pages-section">
       <SearchNotesForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <br />
-      <NotesList notes={filteredNotes} onDelete={onDeleteHandler} onArchive={onArchivingHandler} />
+      <NotesList
+        notes={filteredNotes}
+        onDelete={onDeleteHandler}
+        onArchive={onArchivingHandler}
+        loading={loading}
+      />
       <AddPageLink />
     </section>
   );
